@@ -1,0 +1,40 @@
+{% extends "visualizer/base.html" %}
+{% block content %}
+    <nav>
+         <div class="container">
+            <form action="{% url 'visualizer-home' %}" method="POST">{% csrf_token %}
+            <button type="submit" name="sortarray-bubblesort" value="1" class="btn btn-primary button float-left">Sort the array</button>
+            </form>
+        </div>
+
+        <div class="container">
+            <form action="{% url 'visualizer-home' %}" method="POST">{% csrf_token %}
+              <button type="submit" name='resetarray' value="1" class="btn btn-primary button float-right">Generate an Array</button>
+            </form>
+        </div>
+    </nav>
+    <div class="pt-5">
+    </div>
+    <div class="pt-2">
+    </div>
+    <style>
+    .b {
+      display: block;
+      height: 10px;
+      margin-left: 165px;
+      margin-top: 5px;
+    }
+    </style>
+
+    {% for arr in array %}
+
+    <div class="b" style="width:{{ arr }}px; background-color:
+    {% if color %}
+    {{color}};
+    {% else %}
+    pink;
+    {% endif %}"> </div>
+
+    {% endfor %}
+
+{% endblock content %}
